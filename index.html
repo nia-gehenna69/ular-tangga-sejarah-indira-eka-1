@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101b32">
+  <title>JEJAK ORDE BARU — History Board Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#"><span class="brand-mark">J</span><span>HISTORY<span class="brand-muted">PLAY</span></span></a>
+      <div class="top-tag"><span class="live-dot"></span> LOCAL MULTIPLAYER</div>
+    </header>
+
+    <section id="setupScreen" class="setup-screen">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> INDONESIA • 1966—1998</div>
+        <h1>JEJAK<br><em>ORDE BARU</em></h1>
+        <p class="hero-desc">Satu papan. Banyak cerita. Jelajahi perjalanan Indonesia melalui permainan strategi, keberuntungan, dan pengetahuan sejarah.</p>
+        <div class="hero-pills"><span>✦ 2–8 pemain</span><span>✦ 100 petak perjalanan</span><span>✦ Kuis sejarah</span></div>
+      </div>
+      <div class="setup-card">
+        <div class="card-kicker">MULAI PETUALANGAN</div>
+        <h2>Siapa saja yang bermain?</h2>
+        <p class="muted">Masukkan nama pemain, lalu mulai perjalanan.</p>
+        <div id="playerInputs" class="player-inputs"></div>
+        <div class="setup-actions">
+          <button id="addPlayer" class="btn-quiet" type="button">＋ Tambah pemain</button>
+          <span id="playerCount" class="muted small">2 / 8 pemain</span>
+        </div>
+        <button id="startGame" class="btn-primary" type="button">MULAI PERMAINAN <span>→</span></button>
+        <div class="setup-note">Permainan berjalan bergantian pada satu perangkat.</div>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="game-screen hidden">
+      <div class="game-heading">
+        <div><div class="eyebrow"><span></span> THE HISTORY ADVENTURE</div><h2>Perjalanan dimulai.</h2></div>
+        <button id="newGame" class="btn-quiet" type="button">↻ Permainan baru</button>
+      </div>
+      <div class="game-layout">
+        <section class="board-panel">
+          <div class="board-topline"><span>GARIS WAKTU • 1966—1998</span><span class="board-legend"><i class="legend-up"></i> Lompatan sejarah <i class="legend-down"></i> Tantangan</span></div>
+          <div id="board" class="board" aria-label="Papan permainan 100 petak"></div>
+          <div class="board-footer"><span>START <b>01</b></span><span>FINISH <b>100</b></span></div>
+        </section>
+        <aside class="side-panel">
+          <div class="turn-card">
+            <div class="card-kicker">GILIRAN SEKARANG</div>
+            <div id="currentPlayer" class="current-player"></div>
+            <div class="dice-stage"><div id="dice" class="dice">⚄</div></div>
+            <button id="rollDice" class="btn-primary roll-btn" type="button">LEMPAR DADU <span>🎲</span></button>
+            <p id="turnMessage" class="turn-message">Tekan tombol untuk melempar dadu.</p>
+          </div>
+          <div class="players-card">
+            <div class="panel-title">PAPAN PERINGKAT <span>● LIVE</span></div>
+            <div id="scoreboard" class="scoreboard"></div>
+          </div>
+          <div class="history-card">
+            <div class="panel-title">CATATAN PERJALANAN</div>
+            <div id="eventLog" class="event-log"><div class="log-empty">Perjalananmu akan tercatat di sini.</div></div>
+          </div>
+          <div class="rules-mini"><b>CARA BERMAIN</b><p>Lempar dadu, maju sesuai angka, dan jawab kuis saat mendarat di petak bertanda ✦. Temukan jalur lompatan dan hadapi petak tantangan.</p></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div id="questionModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="questionTitle">
+    <div class="modal-card">
+      <div class="modal-icon">✦</div><div class="eyebrow">ARSIP SEJARAH • MISI PENGETAHUAN</div>
+      <h2 id="questionTitle">Uji ingatanmu!</h2>
+      <p id="questionText" class="question-text"></p>
+      <div id="answerOptions" class="answer-options"></div>
+      <p id="answerFeedback" class="answer-feedback"></p>
+      <button id="continueTurn" class="btn-primary hidden" type="button">LANJUTKAN <span>→</span></button>
+    </div>
+  </div>
+  <div id="winnerModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card winner-card"><div class="winner-crown">🏆</div><div class="eyebrow">SEJARAH TELAH DITULIS</div><h2 id="winnerTitle">Pemenang!</h2><p id="winnerText"></p><button id="playAgain" class="btn-primary">MAIN LAGI <span>↻</span></button></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
